@@ -1,7 +1,7 @@
 # Local-Dynamic-Arrays
 Example:
 
-[code]strcpy(dest[], const source[], maxlength = sizeof dest)
+[PHP]strcpy(dest[], const source[], maxlength = sizeof dest)
 {
     if(source[strlen(source)-1] == '\n')
 		    strmid(dest, source, 0, strlen(source)-1, maxlength);
@@ -19,4 +19,4 @@ main()
 	printf("%s", _$test_string[0]);
 	
 	delete[test_string];
-}[/code]
+}[/PHP]
