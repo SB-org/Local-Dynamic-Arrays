@@ -13,7 +13,7 @@ new tag:dyn_arr@mem[1][MAX_DYNAMIC_MEMORY];
 #define delete[%0]	dyn_arr@delete(%0)
 #define ref<%0>		dyn_arr@ref(%0)
 
-#define _$%0[    (dyn_arr@pointer(%0), dyn_arr@mem[0][0])[
+#define _$%0[           (dyn_arr@pointer(%0), dyn_arr@mem[0][0])[
 
 stock tag:dyn_arr@alloc(size)
 {
