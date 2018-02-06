@@ -7,7 +7,7 @@
     #define MAX_DYNAMIC_MEMORY	4096
 #endif
 
-new tag:dyn_arr@mem[1][MAX_DYNAMIC_MEMORY];
+new _tag:dyn_arr@mem[1][MAX_DYNAMIC_MEMORY];
 
 #define new[%0]		dyn_arr@alloc(%0)
 #define delete[%0]	dyn_arr@delete(%0)
@@ -15,7 +15,7 @@ new tag:dyn_arr@mem[1][MAX_DYNAMIC_MEMORY];
 
 #define _$%0[           (dyn_arr@pointer(%0), dyn_arr@mem[0][0])[
 
-stock tag:dyn_arr@alloc(size)
+stock _tag:dyn_arr@alloc(size)
 {
     assert(size < MAX_DYNAMIC_MEMORY);
 
@@ -31,10 +31,10 @@ stock tag:dyn_arr@alloc(size)
 	add			    // Add HEA(pri) and size(alt) together
 	sctrl 2			    // Allocate memory by moving the heap pointer
     }
-    return tag:pointer;
+    return _tag:pointer;
 }
 
-stock dyn_arr@pointer(tag:pointer) 
+stock dyn_arr@pointer(_tag:pointer) 
 {
     emit 
     {
@@ -45,7 +45,7 @@ stock dyn_arr@pointer(tag:pointer)
     }
 }
 
-stock tag:dyn_arr@delete(pointer)
+stock _tag:dyn_arr@delete(pointer)
 {
     new heap_size;
 	
