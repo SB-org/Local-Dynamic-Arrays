@@ -23,14 +23,15 @@ stock tag:dyn_arr@alloc(size)
 
     emit 
     {
-	load.s.pri (size >> 2) 	    // Load "size" value into PRI and multiply it by 4 to get number of bytes
+	load.s.pri size             // Load "size" value into PRI
+	smul.c 4		    // Multiply it by 4 to get number of bytes
 	move.alt 		    // Move the value to alt
 	lctrl 2			    // Load HEA into PRI
 	stor.s.pri pointer 	    // Load HEA into "pointer"
 	add			    // Add HEA(pri) and size(alt) together
 	sctrl 2			    // Allocate memory by moving the heap pointer
     }
-    return pointer;
+    return tag:pointer;
 }
 
 stock dyn_arr@pointer(tag:pointer) 
@@ -59,10 +60,12 @@ stock tag:dyn_arr@delete(pointer)
     pointer = 0;
 }
 
-stock tag:dyn_arr@ref()
+stock dyn_arr@ref(...)
 {
     emit load.s.pri 12	            // Load first param's address
     emit retn
+    
+    return 0;
 }
 
 stock dyn_arr@clear()
